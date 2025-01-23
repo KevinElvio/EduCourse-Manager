@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->string('price');
-            $table->string('status');
-            $table->string('student_count');
+            $table->text('description');
+            $table->integer('price');
+            $table->boolean('status')->default(1);
+            $table->integer('student_count')->default(0);
             $table->timestamps();
         });
     }
