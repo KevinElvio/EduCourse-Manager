@@ -13,17 +13,17 @@ class registrations extends Model
     protected $table = 'registrations';
 
     protected $fillable = [
-        'name',
-        'description',
-        'price',
+        'course_id',
+        'student_id',
         'status',
-        'students_count',
+        'created_at',
+        'updated_at',
     ];
 
     public function courses(){
-        return $this->belongsTo(courses::class);
+        return $this->belongsTo(courses::class, 'course_id');
     }
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'student_id');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,7 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [CourseController::class, 'index'])->name('dashboard');
     Route::get('/addCourse', [AddCourseController::class, 'index'])->name('addCourse');
+    Route::get('/student', [StudentController::class, 'index'])->name('student');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
