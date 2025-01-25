@@ -18,8 +18,8 @@
                     <x-nav-link :href="route('student')" :active="request()->routeIs('student')">
                         {{ ('Student') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
-                        {{ ('Registrations') }}
+                    <x-nav-link :href="route('transaction')" :active="request()->routeIs('transaction')">
+                        {{ ('Transaction') }}
                     </x-nav-link>
                 </div>
             </div>

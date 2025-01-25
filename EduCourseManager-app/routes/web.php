@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddCourseController;
+use App\Http\Controllers\AddTransactionController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CourseController;
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [CourseController::class, 'index'])->name('dashboard');
     Route::get('/addCourse', [AddCourseController::class, 'index'])->name('addCourse');
     Route::get('/student', [StudentController::class, 'index'])->name('student');
+    Route::get('/addStudent', [AddTransactionController::class, 'index'])->name('transaction');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
