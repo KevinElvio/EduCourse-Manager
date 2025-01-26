@@ -5,8 +5,10 @@ use App\Http\Controllers\AddTransactionController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EditCourseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,12 +26,13 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [CourseController::class, 'index'])->name('dashboard');
-
-    Route::get('/addCourse', [AddCourseController::class, 'index'])->name('addCourse');
+    Route::get('/addCourse', [CourseController::class, 'read'])->name('addCourse');
     Route::post('/addCourse', [CourseController::class, 'store'])->name('addCourses');
+    Route::get('/editCourse/{id}/edit', [CourseController::class, 'edit']);
+    Route::put('/editCourse/{id}/edit', [CourseController::class, 'update']);
 
     Route::get('/student', [StudentController::class, 'index'])->name('student');
-    Route::get('/addStudent', [AddTransactionController::class, 'index'])->name('transaction');
+    Route::get('/addStudent', [TransactionController::class, 'index'])->name('transaction');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

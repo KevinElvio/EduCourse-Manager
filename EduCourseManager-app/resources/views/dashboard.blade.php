@@ -31,7 +31,7 @@
                                         <td class="px-4 py-2">{{ Str::limit($course->description, 50) }}</td>
                                         <td class="px-4 py-2">Rp{{ number_format($course->price, 0, ',', '.') }}</td>
                                         <td class="px-4 py-2">
-                                            @if ($course->status)
+                                            @if ($course->status == 'active')
                                                 <span class="text-green-500">Active</span>
                                             @else
                                                 <span class="text-red-500">Inactive</span>
@@ -39,8 +39,8 @@
                                         </td>
                                         <td class="px-4 py-2">{{ $course->student_count }}</td>
                                         <td class="px-4 py-2">
-                                            <a href="#" class="text-blue-500 hover:underline">Edit</a> |
-                                            <a href="#" class="text-red-500 hover:underline">Delete</a>
+                                            <a href="{{ url('editCourse/' . $course->id . '/edit') }}" class="text-blue-500 hover:underline">Edit</a> |
+                                            <button class="text-red-500 hover:underline">Delete</button>
                                         </td>
                                     </tr>
                                 @endforeach

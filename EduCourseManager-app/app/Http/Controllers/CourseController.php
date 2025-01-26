@@ -13,6 +13,11 @@ class CourseController extends Controller
         return view('dashboard', compact('courses'));
     }
 
+    public function read()
+    {
+        return view('addCourse');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -22,13 +27,11 @@ class CourseController extends Controller
             'status' => 'required',
         ]);
 
-        $status = $request->status === 'Active' ? 1 : 0;
-
         courses::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'status' => $status,
+            'status' => $request->status,
             'student_count' => 0,
             'created_at' => now(),
             'updated_at' => now(),
@@ -36,4 +39,32 @@ class CourseController extends Controller
 
         return redirect('dashboard')->with('status', 'Course Created');
     }
+
+    public function edit($id)
+    {
+        $course = courses::findOrFail($id);
+        return view('editCourse', compact('course'));
+    }
+
+    public function update(Request $request, int $id){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required | max:255',
+            'price' => 'required',
+            'status' => 'required',
+        ]);
+
+        courses::findOrFail($id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'status' => $request->status,
+            'student_count' => 0,
+            'updated_at' => now(),
+        ]);
+
+        return redirect('dashboard')->with('status', 'Course Updated');
+    }
+    
+    
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price');
-            $table->boolean('status')->default(1);
+            $table->string('status')->default('inactive');
             $table->integer('student_count')->default(0);
             $table->timestamps();
         });
