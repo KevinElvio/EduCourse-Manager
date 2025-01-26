@@ -65,6 +65,14 @@ class CourseController extends Controller
 
         return redirect('dashboard')->with('status', 'Course Updated');
     }
+
+    public function destroy( int $id)
+    {
+        $course = courses::findOrFail($id);
+        $course->delete();
+
+        return redirect()->back()->with('status', 'Book Delete');
+    }
     
     
 }

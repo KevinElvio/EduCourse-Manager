@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/addCourse', [CourseController::class, 'store'])->name('addCourses');
     Route::get('/editCourse/{id}/edit', [CourseController::class, 'edit']);
     Route::put('/editCourse/{id}/edit', [CourseController::class, 'update']);
+    Route::delete('/deleteCourse/{id}/delete', [CourseController::class, 'destroy']);
 
     Route::get('/student', [StudentController::class, 'index'])->name('student');
     Route::get('/addStudent', [TransactionController::class, 'index'])->name('transaction');
