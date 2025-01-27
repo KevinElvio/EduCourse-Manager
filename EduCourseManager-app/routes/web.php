@@ -31,9 +31,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/editCourse/{id}/edit', [CourseController::class, 'edit']);
     Route::put('/editCourse/{id}/edit', [CourseController::class, 'update']);
     Route::delete('/deleteCourse/{id}/delete', [CourseController::class, 'destroy']);
-
+    
     Route::get('/student', [StudentController::class, 'index'])->name('student');
-    Route::get('/addStudent', [TransactionController::class, 'index'])->name('transaction');
+    
+    Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+    Route::post('/addtransaction', [TransactionController::class, 'store'])->name('addtransaction');
+    Route::get('/transaction/{id}/edit', [TransactionController::class, 'edit']);
+    Route::put('/transaction/{id}/edit', [TransactionController::class, 'update']);
+    Route::delete('/deletetransaction/{id}/delete', [TransactionController::class, 'destroy']);
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

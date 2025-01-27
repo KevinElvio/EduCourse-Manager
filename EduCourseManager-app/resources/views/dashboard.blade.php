@@ -41,10 +41,12 @@
                                         <td class="px-4 py-2 flex">
                                             <a href="{{ url('editCourse/' . $course->id . '/edit') }}"
                                                 class="text-blue-500 hover:underline">Edit</a> |
-                                            <form action="{{ url('deleteCourse/' . $course->id. '/delete')  }}" method="POST">
+                                            <form action="{{ url('deleteCourse/' . $course->id . '/delete') }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="text-red-500 hover:underline" type="submit">Delete</button>
+                                                <button class="text-red-500 hover:underline"
+                                                    type="submit">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -72,7 +74,7 @@
                                     <path fill="currentColor"
                                         d="M26.18 64.173c.831 0 1.55.623 1.786 1.342l2.408-1.121c-.553-1.273-1.771-2.685-4.193-2.685c-2.893 0-5.079 1.924-5.079 4.775c0 2.837 2.187 4.774 5.079 4.774c2.422 0 3.654-1.467 4.193-2.699l-2.408-1.107c-.235.719-.955 1.342-1.786 1.342c-1.342 0-2.242-1.024-2.242-2.311s.899-2.31 2.242-2.31m9.476 4.734a4.3 4.3 0 0 1-2.976-1.19l-1.453 2.076c.982.886 2.325 1.467 4.291 1.467c2.477 0 3.986-1.176 3.986-3.211c0-3.432-5.135-2.685-5.135-3.557c0-.235.152-.415.706-.415c.872 0 1.91.304 2.712.913l1.495-1.979c-1.052-.858-2.408-1.287-3.917-1.287c-2.533 0-3.833 1.495-3.833 3.059c0 3.64 5.148 2.74 5.148 3.626c0 .359-.498.498-1.024.498m7.615-7.045h-3.169l3.404 9.231h3.516l3.404-9.231h-3.169l-1.993 6.214z" />
                                 </svg>Export</button>
-                            <button
+                            <button onclick="toggleModal(true)"
                                 class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 flex"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                     viewBox="0 0 20 20">
@@ -89,7 +91,47 @@
                                 PDF</button>
                         </div>
                     </div>
+
+                    <!-- Import Modal -->
+                    <div id="importModal"
+                        class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50">
+                        <div class="bg-white rounded-lg shadow-lg w-96">
+                            <div class="px-4 py-3 border-b">
+                                <h2 class="text-lg font-semibold text-gray-800">Import Data Excel</h2>
+                            </div>
+                            <div class="p-4">
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-4">
+                                        <label for="excelFile" class="block text-sm font-medium text-gray-700">Upload
+                                            Excel File</label>
+                                        <input type="file" name="excel_file" id="excelFile"
+                                            class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                    </div>
+                                    <div class="flex justify-end space-x-4">
+                                        <button type="button" onclick="toggleModal(false)"
+                                            class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 focus:outline-none">
+                                            Cancel
+                                        </button>
+                                        <button type="submit"
+                                            class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none">
+                                            Import
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleModal(show) {
+                            const modal = document.getElementById('importModal');
+                            modal.style.display = show ? 'flex' : 'none';
+                        }
+                    </script>
+
                 </main>
+
             </div>
 
         </div>

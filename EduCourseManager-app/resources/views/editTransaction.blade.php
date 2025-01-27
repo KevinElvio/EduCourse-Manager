@@ -1,32 +1,26 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ 'Add Transaction' }}
+        {{ 'Edit Transaction' }}
     </x-slot>
 
     <div class=" bg-gray-800 text-white">
         <div class="container mx-auto py-10 px-6">
 
-            <form action="{{ route('addtransaction') }}" method="POST" class="bg-gray-900 p-6 rounded-lg shadow-lg">
+            <form action="{{ url("transaction/" .$registration->id. "/edit") }}" method="POST" class="bg-gray-900 p-6 rounded-lg shadow-lg">
                 @csrf
+                @method('PUT')
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Student Name</label>
                     <input type="text" name="name" id="name" placeholder="Enter student name"
                         class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required />
+                        required value="{{ $registration->users->name }}"/>
                 </div>
 
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Student Email</label>
                     <input type="email" name="email" id="email" placeholder="Enter student email"
                         class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required />
-                </div>
-                
-                <div class="mb-4">
-                    <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Student Password</label>
-                    <input type="text" name="password" id="password" placeholder="Enter student password"
-                        class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required />
+                        required value="{{ $registration->users->email }}"/>
                 </div>
                 
                 <div class="mb-4">
@@ -35,7 +29,7 @@
                         class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         required>
                         @foreach ($courses as $course)
-                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                        <option value="{{ $course->id }}" {{ $registration->course_id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -44,7 +38,7 @@
                     <label for="date" class="block text-sm font-medium text-gray-300 mb-2">Input Date</label>
                     <input type="date" name="date" id="date" placeholder="Enter date"
                         class="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        required />
+                        required value="{{ $registration->updated_at->format('Y-m-d') }}">
                 </div>
 
                 <div class="mb-4">
