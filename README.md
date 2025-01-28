@@ -1,4 +1,4 @@
-# 🌟 EduCourse Manager
+# 📚 EduCourse Manager
 
 **EduCourse Manager** is a course management application designed to facilitate the management of student data, courses, and the course enrollment process. This application uses **PHP** for the backend with **Blade** as the *templating engine*.  
 
