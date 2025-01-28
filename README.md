@@ -112,8 +112,6 @@ Gunakan kredensial berikut untuk login ke aplikasi:
 
 ---
 
----
-
 ## Kontak Pengembang  
 **Nama**: Kevin Elvio  
 **Email**: kevinelvio18@gmail.com
