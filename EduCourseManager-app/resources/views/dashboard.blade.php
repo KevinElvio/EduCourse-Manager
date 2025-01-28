@@ -63,7 +63,7 @@
                             class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">Add
                             Course</a>
                         <div class="flex space-x-4">
-                            <a href="{{ 'courseExport' }}"
+                            <a href="{{ route('courseExport') }}"
                                 class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 flex">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                     viewBox="0 0 100 100">
@@ -101,13 +101,13 @@
                                 <h2 class="text-lg font-semibold text-gray-800">Import Data Excel</h2>
                             </div>
                             <div class="p-4">
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('courseImport') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-4">
                                         <label for="excelFile" class="block text-sm font-medium text-gray-700">Upload
                                             Excel File</label>
-                                        <input type="file" name="excel_file" id="excelFile"
-                                            class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                        <input type="file" name="file" id="file"
+                                            class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" required>
                                     </div>
                                     <div class="flex justify-end space-x-4">
                                         <button type="button" onclick="toggleModal(false)"

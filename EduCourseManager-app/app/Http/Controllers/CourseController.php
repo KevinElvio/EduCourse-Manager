@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CourseExport;
+use App\Imports\CourseImport;
 use App\Models\courses;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -80,7 +81,20 @@ class CourseController extends Controller
     public function courseExport()
     {
         return Excel::download(new CourseExport, 'Course.xlsx');
-    } 
+    }
+
+    public function courseImport(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|max:10240'
+        ]);
+
+        $file = $request->file('file');
+        $nameFile = $file->getClientOriginalName();
+        $file->move('DataCourse', $nameFile);
+        Excel::import(new CourseImport, public_path('/DataCourse/' . $nameFile));
+        return redirect('dashboard')->with('status', 'Course Imported');
+    }
     
     
 }
