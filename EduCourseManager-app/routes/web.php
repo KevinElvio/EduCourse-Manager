@@ -38,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/student', [StudentController::class, 'index'])->name('student');
     Route::get('/studentExport', [StudentController::class, 'studentExport'])->name('studentExport');
     Route::post('/studentImport', [StudentController::class, 'studentImport'])->name('studentImport');
+    Route::get('/cetakStudent', [StudentController::class, 'cetakStudent'])->name('cetakStudent');
     
     Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
     Route::post('/addtransaction', [TransactionController::class, 'store'])->name('addtransaction');

@@ -34,4 +34,10 @@ class StudentController extends Controller
         Excel::import(new StudentImport, public_path('/DataCourse/' . $nameFile));
         return redirect('dashboard')->with('status', 'Course Imported');
     }
+
+    public function cetakStudent()
+    {
+        $students = registrations::with('users','courses')->paginate(10);
+        return view('cetakPdfStudent', compact('students'));
+    }
 }
