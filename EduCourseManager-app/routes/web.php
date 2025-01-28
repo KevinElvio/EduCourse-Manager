@@ -26,6 +26,7 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [CourseController::class, 'index'])->name('dashboard');
+    Route::get('/cetakCourse', [CourseController::class, 'cetakCourse'])->name('cetakCourse');
     Route::get('/addCourse', [CourseController::class, 'read'])->name('addCourse');
     Route::post('/addCourse', [CourseController::class, 'store'])->name('addCourses');
     Route::get('/editCourse/{id}/edit', [CourseController::class, 'edit']);

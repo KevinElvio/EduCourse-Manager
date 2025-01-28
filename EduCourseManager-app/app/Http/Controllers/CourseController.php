@@ -95,6 +95,12 @@ class CourseController extends Controller
         Excel::import(new CourseImport, public_path('/DataCourse/' . $nameFile));
         return redirect('dashboard')->with('status', 'Course Imported');
     }
+
+    public function cetakCourse()
+    {
+        $courses = courses::all();
+        return view('cetakPDFCourse', compact('courses'));
+    }
     
     
 }
