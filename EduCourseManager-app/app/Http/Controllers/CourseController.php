@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CourseExport;
 use App\Models\courses;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class CourseController extends Controller
 {
@@ -73,6 +76,11 @@ class CourseController extends Controller
 
         return redirect()->back()->with('status', 'Book Delete');
     }
+
+    public function courseExport()
+    {
+        return Excel::download(new CourseExport, 'Course.xlsx');
+    } 
     
     
 }

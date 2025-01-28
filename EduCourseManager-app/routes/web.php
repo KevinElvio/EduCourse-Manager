@@ -31,6 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/editCourse/{id}/edit', [CourseController::class, 'edit']);
     Route::put('/editCourse/{id}/edit', [CourseController::class, 'update']);
     Route::delete('/deleteCourse/{id}/delete', [CourseController::class, 'destroy']);
+    Route::get('/courseExport', [CourseController::class, 'courseExport'])->name('courseExport');
     
     Route::get('/student', [StudentController::class, 'index'])->name('student');
     
