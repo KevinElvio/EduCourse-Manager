@@ -102,10 +102,6 @@ class TransactionController extends Controller
 
     public function destroy(int $id){
         $registrations = registrations::findOrFail($id);
-        $user = $registrations->users;
-        if($user){
-            $user->delete();
-        }
 
         $course = courses::find($registrations->course_id);
         if($course){

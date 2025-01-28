@@ -75,7 +75,7 @@ class CourseController extends Controller
         $course = courses::findOrFail($id);
         $course->delete();
 
-        return redirect()->back()->with('status', 'Book Delete');
+        return redirect('student')->with('status', 'Book Delete');
     }
 
     public function courseExport()

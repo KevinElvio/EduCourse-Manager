@@ -15,24 +15,27 @@ class Registration extends Seeder
      */
     public function run(): void
     {
-           $users = User::all();
-           $courses = courses::all();
-   
-           // Pastikan tabel users dan courses tidak kosong
-           if ($users->isEmpty() || $courses->isEmpty()) {
-               $this->command->info('Tabel users atau courses kosong. Silakan isi terlebih dahulu.');
-               return;
-           }
-   
-           // Loop untuk membuat 20 data dummy registrasi
-           foreach (range(1, 20) as $index) {
-               registrations::create([
-                   'course_id' => $courses->random()->id,
-                   'student_id' => $users->random()->id,
-                   'status' => fake()->randomElement(['Lunas', 'Belum Lunas']),
-                   'created_at' => now()->subDays(rand(1, 30)),
-                   'updated_at' => now(),
-               ]);
-           }
+        $users = User::where('role', '!=', 'admin')->get();
+        $courses = courses::all();
+
+        if ($users->isEmpty() || $courses->isEmpty()) {
+            $this->command->info('Tabel users atau courses kosong. Silakan isi terlebih dahulu.');
+            return;
+        }
+
+        foreach (range(1, 20) as $index) {
+            $course = $courses->random();
+            $student_id = $users->random()->id;
+
+            registrations::create([
+                'course_id' => $course->id,
+                'student_id' => $student_id,
+                'status' => fake()->randomElement(['Lunas', 'Belum Lunas']),
+                'created_at' => now()->subDays(rand(1, 30)),
+                'updated_at' => now(),
+            ]);
+
+            $course->increment('student_count');
+        }
     }
 }
