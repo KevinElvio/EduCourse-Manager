@@ -26,8 +26,6 @@
 - **Dependency Manager**: Composer  
 - **Deployment**: Laravel artisan  
 
----
-
 ## Instalasi
 
 Ikuti langkah-langkah di bawah untuk menjalankan aplikasi di local host Anda:
