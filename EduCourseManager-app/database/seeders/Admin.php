@@ -16,9 +16,9 @@ class Admin extends Seeder
     {
         User::insert([
             [
-                'name' => 'Kevin Elvio',
-                'email' => 'kevinelvio18@example.com',
-                'password' => Hash::make('password123'),
+                'name' => 'Admin',
+                'email' => 'admin@example.com',
+                'password' => Hash::make('admin12345'),
                 'role' => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
