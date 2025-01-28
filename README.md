@@ -1,114 +1,115 @@
-# EduCourse Manager
+# 🌟 EduCourse Manager
 
-**EduCourse Manager** adalah aplikasi manajemen kursus yang dirancang untuk mempermudah pengelolaan data siswa, kursus, dan proses pendaftaran kursus. Aplikasi ini menggunakan **PHP** sebagai backend dengan **Blade** untuk *templating engine*.  
+**EduCourse Manager** is a course management application designed to facilitate the management of student data, courses, and the course enrollment process. This application uses **PHP** for the backend with **Blade** as the *templating engine*.  
 
-## Fitur
-- **Manajemen Kursus**  
-  Tambahkan, ubah, atau hapus data kursus.  
-- **Manajemen Siswa**  
-  Kelola data siswa, termasuk informasi pribadi.  
-- **Manajemen Pendaftaran**  
-  Pendaftaran siswa ke kursus secara terstruktur.  
-- **Otentikasi dan Autentikasi**  
-  Sistem login dan kontrol akses untuk keamanan data.  
+## ✨ Features
+- 📘 **Course Management**  
+  Add, edit, or delete course data.  
+- 🧑‍🎓 **Student Management**  
+  Manage student data, including personal information.  
+- 📝 **Enrollment Management**  
+  Structured student enrollment into courses.  
+- 🔒 **Authentication and Authorization**  
+  Login system and access control for data security.
+  
 
+## ⚙️ Technology Used
+- 🖥️ **Backend**: PHP 10  
+- 🗄️ **Database**: MySQL/MariaDB  
+- 🎨 **Frontend**: Blade (PHP Templating Engine) & Tailwind CSS  
+- 📦 **Dependency Manager**: Composer  
+- 🚀 **Deployment**: Laravel artisan  
 
-## Demo
-🚧 **Under Construction**  
+## 🛠️ Installation
 
----
+Follow the steps below to run the application on your local host:
 
-## Teknologi yang Digunakan
-- **Backend**: PHP 10  
-- **Database**: MySQL/MariaDB  
-- **Frontend**: Blade (PHP Templating Engine) & Tailwind CSS 
-- **Dependency Manager**: Composer  
-- **Deployment**: Laravel artisan  
-
-## Instalasi
-
-Ikuti langkah-langkah di bawah untuk menjalankan aplikasi di local host Anda:
-
-### Persyaratan
-Pastikan sistem Anda memenuhi kebutuhan berikut:
-- PHP 8.0 atau lebih baru
+### ✅ Requirements
+Make sure your system meets the following requirements:
+- PHP 8.0 or later
 - Composer
-- Database MySQL/MariaDB
+- MySQL/MariaDB Database
 - Web server (Apache/Nginx)
-- Node.js dan npm (opsional, untuk pengembangan front-end)
+- Node.js and npm (optional, for front-end development)
 
-### Langkah-langkah Instalasi
+### 📋 Installation Steps
 
-1. **Clone Repositori**  
+1. **Clone the Repository**  
    ```bash
    git clone https://github.com/KevinElvio/EduCourse-Manager.git
    cd EduCourse-Manager
    ```
 
-2. **Instal Dependensi Backend**  
-   Jalankan perintah berikut untuk menginstal semua dependensi:
+2. **Install Backend Dependencies**  
+   Run the following command to install all dependencies:
    ```bash
    composer install
    ```
 
-3. **Konfigurasi File `.env`**  
-   Salin file `.env.example` menjadi `.env`:
+3. **Configure the `.env` File**  
+   Copy the `.env.example` file to `.env`:
    ```bash
    cp .env.example .env
    ```
-   Atur konfigurasi database Anda di file `.env`:
+   Set up your database configuration in the `.env` file:
    ```env
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=nama_database
-   DB_USERNAME=username_database
-   DB_PASSWORD=password_database
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_database_username
+   DB_PASSWORD=your_database_password
    ```
 
-4. **Buat Database**  
-   Buat database di MySQL sesuai dengan konfigurasi di file `.env`.
+4. **Create a Database**  
+   Create a database in MySQL according to the configuration in the `.env` file.
 
-5. **Migrasi Database**  
-   Jalankan migrasi untuk membuat tabel di database:
+5. **Run Database Migrations**  
+   Run migrations to create tables in the database:
    ```bash
    php artisan migrate
    ```
 
-6. **Seed Data Awal** (opsional)  
-   Tambahkan data dummy untuk pengujian:
+6. **Seed Initial Data** (optional)  
+   Add dummy data for testing:
    ```bash
    php artisan db:seed --class=Admin
    php artisan db:seed --class=Course
    php artisan db:seed --class=Student
    php artisan db:seed --class=Registration
    ```
-7. **Instal Dependensi Frontend**  
+
+7. **Install Frontend Dependencies**  
    ```bash
    npm install
    ```
-8. **Kompilasi Aset**  
-   Untuk mode pengembangan:
+
+8. **Compile Assets**  
+   For development mode:
    ```bash
    npm run dev
    ```
+   For production mode:
+   ```bash
+   npm run prod
+   ```
 
-9. **Jalankan Server**  
-   Aktifkan server lokal Laravel:
-  ```bash
+9. **Start the Server**  
+   Enable the local Laravel server:
+   ```bash
    php artisan serve
    ```
-   Aplikasi akan berjalan di `http://127.0.0.1:8000`.
+   The application will run at `http://127.0.0.1:8000`.
 
 ---
 
-## Akun Admin Default
-Gunakan kredensial berikut untuk login ke aplikasi:  
+## 🔑 Default Admin Account
+Use the following credentials to log in to the application:  
 - **Email**: `admin@example.com`  
 - **Password**: `admin12345`  
 
 ---
 
-## Kontak Pengembang  
-**Nama**: Kevin Elvio  
+## 👨‍💻 Developer Contact  
+**Name**: Kevin Elvio  
 **Email**: kevinelvio18@gmail.com
